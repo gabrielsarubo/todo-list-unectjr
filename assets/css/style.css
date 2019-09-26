@@ -33,6 +33,7 @@ html {
 body {
 	background-color: #FAFAFA;
 	font-family: 'Raleway', Tahoma, sans-serif;
+	color: #393939;
 }
 
 /* Formatacao geral das fontes */
@@ -53,4 +54,56 @@ h1, h2, h3, h4, h5, h6 {
 p {
 	margin-top: 0;
 	margin-bottom: 1rem;
+}
+
+/* Formatacao do header#cabecalho */
+header#cabecalho {
+	width: 100%;
+	margin-top: 110px;
+}
+
+div.cabecalho-inner {
+	width: 420px;
+	/* height: 123px; */
+	margin: 0 auto;
+}
+
+.cabecalho-inner h1 {
+	font-size: 45px;
+	font-weight: 500px;
+	text-align: center;
+}
+
+.cabecalho-inner div.container-add-tarefa {
+	/* width: 420px; transborda o container pai */
+	margin-top: 20px;
+	display: flex;
+}
+
+.container-add-tarefa input.input-add-tarefa {
+	width: 380px;
+	height: 36px;
+	margin-right: 10px;
+
+	border-radius: 4px;
+	border: 1px solid #D7D7D7;
+	font-size: 15px;
+	line-height: 36px;
+	padding-left: 10px;
+	font-family: inherit;
+}
+
+.container-add-tarefa .btn-add-tarefa {
+	width: 30px;
+	height: 30px;
+	margin: 5px 0;
+
+	text-align: center;
+	line-height: 30px;
+	color: #6F68A3;
+	cursor: pointer;
+}
+
+.btn-add-tarefa i {
+	font-size: 30px;
 }
