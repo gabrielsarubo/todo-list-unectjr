@@ -24,3 +24,33 @@ time, mark, audio, video {
 	/* remover linha abaixo depois da estrutura*/
 	/* border: 1px solid rgba(0,0,0,0.7); */
 }
+
+html {
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+body {
+	background-color: #FAFAFA;
+	font-family: 'Raleway', Tahoma, sans-serif;
+}
+
+/* Formatacao geral das fontes */
+h1 { font-size: 1.75rem; }
+
+h2 { font-size: 1.5rem; }
+
+h3 { font-size: 1.25rem; }
+
+h4 { font-size: 1rem; }
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+p {
+	margin-top: 0;
+	margin-bottom: 1rem;
+}
