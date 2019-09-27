@@ -63,14 +63,13 @@ header#cabecalho {
 }
 
 div.cabecalho-inner {
-	width: 420px;
-	/* height: 123px; */
+	width: 26.25rem;
 	margin: 0 auto;
 }
 
 .cabecalho-inner h1 {
-	font-size: 45px;
-	font-weight: 500px;
+	font-size: 2.8125rem;
+	font-weight: 500;
 	text-align: center;
 }
 
@@ -82,15 +81,15 @@ div.cabecalho-inner {
 }
 
 .container-add-tarefa input.input-add-tarefa {
-	width: 280px;
-	height: 40px;
-	margin-right: 10px;
+	width: 17.5rem;
+	height: 2.5rem;
+	margin-right: 0.625rem;
 
 	border-radius: 6px;
 	border: 2px solid rgb(228, 228, 228);
-	font-size: 15px;
-	line-height: 40px;
-	padding-left: 15px;
+	font-size: 0.9375rem;
+	line-height: 2.5rem;
+	padding-left: 0.9375rem;
 	font-family: inherit;
 
 	transition: 200ms;
@@ -104,24 +103,24 @@ div.cabecalho-inner {
 	}
 
 .container-add-tarefa .btn-add-tarefa {
-	width: 36px;
-	height: 36px;
-	margin-top: 5px;
+	width: 2.25rem;
+	height: 2.25rem;
+	margin-top: 0.3125rem;
 
 	text-align: center;
-	line-height: 36px;
+	line-height: 2.25rem;
 	color: #6F68A3;
 	cursor: pointer;
 }
 
 .btn-add-tarefa i {
-	font-size: 36px;
+	font-size: 2.25rem;
 }
 
 /* Interface geral */
 div#interface-geral {
 	width: 70%;
-	min-width: 915px; /* Evitar que seja menor que 915px */
+	min-width: 57.1875rem; /* Evitar que seja menor que 915px */
 	margin: 4% auto 0 auto;
 }
 
@@ -136,9 +135,9 @@ section#container-cards {
 
 /* Formatacao de geral de todos os cards */
 section#container-cards .cards {
-	width: 280px;
+	width: 17.5rem;
 	height: fit-content;
-	min-height: 280px;
+	min-height: 17.5rem;
 	margin-bottom: 1.5rem;
 
 	background-color: white;
@@ -155,28 +154,28 @@ section#container-cards .cards:hover {
 
 /* Formatacao da container invisivel que cerca o conteudo do card */
 .cards .inner-card {
-	width: 200px;
-	margin: 20px auto 50px auto;
+	width: 12.5rem;
+	margin: 1.25rem auto 3.125rem auto;
 }
 
 /* Titulo dos cards */
 .inner-card div.card-titulo {
-	width: 90px;
+	width: 5.625rem;
 	margin: 0 auto;
-	padding: 20px 0;
-	padding-bottom: 30px;
+	padding: 1.25rem 0;
+	padding-bottom: 1.875rem;
 	border-bottom: 2px solid #393939;
 }
 
 .card-titulo h2 {
-	font-size: 24px;
+	font-size: 1.5rem;
 	font-weight: 500;
 	text-align: center;
 }
 
 /* Lista e itens da lista */
 ul.card-list-container {
-	margin-top: 40px;
+	margin-top: 2.5rem;
 }
 
 ul.card-list-container li {
@@ -186,7 +185,7 @@ ul.card-list-container li {
 	font-style: italic;
 	list-style: none;
 	cursor: pointer;
-	margin-bottom: 15px;
+	margin-bottom: 0.9375rem;
 }
 
 /* Mostrar e tirar os icones de cada item da lista */
@@ -194,9 +193,9 @@ ul.card-list-container li i {
 	visibility: hidden;
 	position: absolute;
 	top: 5px;
-	margin-left: 6px;
+	margin-left: 0.375rem;
 
-	font-size: 14px;
+	font-size: 0.875rem;
 }
 
 ul.card-list-container li:hover i {
@@ -232,10 +231,10 @@ footer {
 footer p {
 	width: fit-content;
 	margin: auto;
-	padding: 20px;
+	padding: 1.25rem;
 
 	text-align: center;
-	font: Italic 14px Arial;
+	font: Italic 0.875rem Arial;
 	letter-spacing: 0;
 	color: #39393983;
 }
@@ -252,8 +251,8 @@ footer p a:hover {
 /* Para dispositivos menores que 1024px para baixo */
 @media only screen and (max-width: 1024px) {
 	div#interface-geral {
-		width: 420px;
-		min-width: 420px;
+		width: 26.25rem;
+		min-width: 26.25rem;
     }
     
     section#container-cards {
