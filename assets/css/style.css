@@ -118,14 +118,19 @@ div.cabecalho-inner {
 	font-size: 36px;
 }
 
+/* Interface geral */
+div#interface-geral {
+	width: 70%;
+	min-width: 915px; /* Evitar que seja menor que 915px */
+	margin: 4% auto 0 auto;
+}
+
 /* Formatacao da secao de cards */
 /* Formatacao do container geral */
 section#container-cards {
-	width: 70%;
-	/* Evitar que seja menor que 915px */
-	min-width: 915px;
-	margin: 60px auto 0 auto;
+	width: 100%;
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: space-between;
 }
 
@@ -213,4 +218,19 @@ div#card-done div.card-titulo {
 
 div#card-done ul {
 	text-decoration: line-through;
+}
+
+/* Para dispositivos menores que 1024px para baixo */
+@media only screen and (max-width: 1024px) {
+	div#interface-geral {
+		width: 420px;
+		min-width: 420px;
+    }
+    
+    section#container-cards {
+		width: fit-content;
+		margin: 0 auto;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
 }
