@@ -46,7 +46,7 @@ h3 { font-size: 1.25rem; }
 h4 { font-size: 1rem; }
 
 h1, h2, h3, h4, h5, h6 {
-    margin-bottom: .5rem;
+    /* margin-bottom: .5rem; */
     font-weight: 500;
     line-height: 1.2;
 }
@@ -106,4 +106,71 @@ div.cabecalho-inner {
 
 .btn-add-tarefa i {
 	font-size: 30px;
+}
+
+/* Formatacao da secao de cards */
+/* Formatacao do container geral */
+section#container-cards {
+	width: 70%;
+	margin: 80px auto 0 auto;
+	display: flex;
+	justify-content: space-between;
+}
+
+/* Formatacao de geral de todos os cards */
+section#container-cards .cards {
+	width: 280px;
+	height: 355px;
+
+	background-color: white;
+	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.10);
+	border-radius: 10px;
+}
+
+/* Formatacao da container invisivel que cerca o conteudo do card */
+.cards .inner-card {
+	width: 200px;
+	margin: 20px auto 0 auto;
+}
+
+/* Titulo dos cards */
+.inner-card div.card-titulo {
+	width: 130px;
+	margin: 0 auto;
+	padding: 20px 0;
+	padding-bottom: 30px;
+	border-bottom: 2px solid #393939;
+}
+
+.card-titulo h2 {
+	font-size: 24px;
+	font-weight: 500;
+	text-align: center;
+}
+
+/* Lista e itens da lista */
+ul.card-list-container {
+	margin-top: 40px;
+}
+
+ul.card-list-container li {
+	text-align: center;
+	font-style: italic;
+	list-style: none;
+	margin-bottom: 15px;
+}
+
+/* Card To Do */
+div#card-todo div.card-titulo {
+	border-bottom: 2px solid rgba(255, 47, 99, 0.5);
+}
+
+/* Card Doing */
+div#card-doing div.card-titulo {
+	border-bottom: 2px solid rgba(253, 177, 115, 0.5);
+}
+
+/* Card Done */
+div#card-done div.card-titulo {
+	border-bottom: 2px solid rgba(0, 200, 200, 0.5);
 }
