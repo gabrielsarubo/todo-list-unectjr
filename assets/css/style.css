@@ -91,7 +91,16 @@ div.cabecalho-inner {
 	line-height: 36px;
 	padding-left: 10px;
 	font-family: inherit;
+
+	transition: 200ms;
 }
+
+	/* Efeito de sombra quando input ter foco */
+	input.input-add-tarefa:focus {
+		outline: none;
+		border: 1px solid rgba(111, 104, 163, 0.7);		
+		box-shadow: 0 0 4px 1px rgba(111, 104, 163, 0.25);
+	}
 
 .container-add-tarefa .btn-add-tarefa {
 	width: 30px;
@@ -125,6 +134,13 @@ section#container-cards .cards {
 	background-color: white;
 	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.10);
 	border-radius: 10px;
+
+	transition: box-shadow 300ms;
+}
+
+/* Aumentar a sombra do card quando passar o mouse */
+section#container-cards .cards:hover {
+	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 /* Formatacao da container invisivel que cerca o conteudo do card */
@@ -173,4 +189,8 @@ div#card-doing div.card-titulo {
 /* Card Done */
 div#card-done div.card-titulo {
 	border-bottom: 2px solid rgba(0, 200, 200, 0.5);
+}
+
+div#card-done ul {
+	text-decoration: line-through;
 }
