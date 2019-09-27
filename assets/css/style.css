@@ -170,10 +170,27 @@ ul.card-list-container {
 }
 
 ul.card-list-container li {
+	position: relative;
+
 	text-align: center;
 	font-style: italic;
 	list-style: none;
+	cursor: pointer;
 	margin-bottom: 15px;
+}
+
+/* Mostrar e tirar os icones de cada item da lista */
+ul.card-list-container li i {
+	visibility: hidden;
+	position: absolute;
+	top: 5px;
+	margin-left: 6px;
+
+	font-size: 14px;
+}
+
+ul.card-list-container li:hover i {
+	visibility: visible;
 }
 
 /* Card To Do */
