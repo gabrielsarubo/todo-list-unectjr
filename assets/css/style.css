@@ -161,7 +161,7 @@ section#container-cards .cards:hover {
 
 /* Titulo dos cards */
 .inner-card div.card-titulo {
-	width: 130px;
+	width: 90px;
 	margin: 0 auto;
 	padding: 20px 0;
 	padding-bottom: 30px;
@@ -205,21 +205,48 @@ ul.card-list-container li:hover i {
 
 /* Card To Do */
 div#card-todo div.card-titulo {
-	border-bottom: 2px solid rgba(255, 47, 99, 0.5);
+	border-bottom-color: rgba(255, 47, 99, 0.5);
 }
 
 /* Card Doing */
 div#card-doing div.card-titulo {
-	border-bottom: 2px solid rgba(253, 177, 115, 0.5);
+	border-bottom-color: rgba(253, 177, 115, 0.5);
 }
 
 /* Card Done */
 div#card-done div.card-titulo {
-	border-bottom: 2px solid rgba(0, 200, 200, 0.5);
+	border-bottom-color: rgba(0, 200, 200, 0.5);
 }
 
 div#card-done ul {
 	text-decoration: line-through;
+}
+
+/* Footer */
+footer {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+
+footer p {
+	width: fit-content;
+	margin: auto;
+	padding: 20px;
+
+	text-align: center;
+	font: Italic 14px Arial;
+	letter-spacing: 0;
+	color: #39393983;
+}
+
+footer p a {
+	text-decoration: none;
+	color: inherit;
+}
+
+footer p a:hover {
+	color: #393939;
 }
 
 /* Para dispositivos menores que 1024px para baixo */
@@ -234,5 +261,10 @@ div#card-done ul {
 		margin: 0 auto;
         flex-direction: column;
         flex-wrap: nowrap;
-    }
+	}
+	
+	footer {
+		position: absolute;
+		bottom: unset;
+	}
 }
