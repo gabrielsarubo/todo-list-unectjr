@@ -137,7 +137,9 @@ section#container-cards {
 /* Formatacao de geral de todos os cards */
 section#container-cards .cards {
 	width: 280px;
-	height: 355px;
+	height: fit-content;
+	min-height: 280px;
+	margin-bottom: 1.5rem;
 
 	background-color: white;
 	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.10);
@@ -154,7 +156,7 @@ section#container-cards .cards:hover {
 /* Formatacao da container invisivel que cerca o conteudo do card */
 .cards .inner-card {
 	width: 200px;
-	margin: 20px auto 0 auto;
+	margin: 20px auto 50px auto;
 }
 
 /* Titulo dos cards */
