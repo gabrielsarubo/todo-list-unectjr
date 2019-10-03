@@ -34,6 +34,7 @@ body {
 	background-color: rgb(245, 245, 245);
 	font-family: 'Raleway', Tahoma, sans-serif;
 	color: #393939;
+	overflow-x: hidden;
 }
 
 /* Formatacao geral das fontes */
@@ -74,17 +75,18 @@ div.cabecalho-inner {
 }
 
 .cabecalho-inner div.container-add-tarefa {
+	position: relative;
 	width: fit-content;
 	margin: 0 auto;
-	margin-top: 7%;
+	margin-top: 5%;
 	display: flex;
 }
 
 .container-add-tarefa input.input-add-tarefa {
-	width: 17.5rem;
-	height: 2.5rem;
-	margin-right: 0.625rem;
+	width: 280px;
+	height: 42px;
 
+	box-sizing: border-box;
 	border-radius: 6px;
 	border: 2px solid rgb(228, 228, 228);
 	font-size: 0.9375rem;
@@ -103,20 +105,25 @@ div.cabecalho-inner {
 	}
 
 .container-add-tarefa .btn-add-tarefa {
-	width: 28px;
-	height: 28px;
-	margin-top: 8px;
+	position: absolute;/* garante que o btn sempre esteja ao lado do input */
+	right: -40px;/* faz com que o btn sempre tenha 12px de espaco entre o input */
+	width: 32px;
+	height: 42px;/* altura do btn precisa ser igual a altura do input */
 
-	background: url(../assets/svg/add-regular.svg) no-repeat top left;
-	background-size: 28px 28px;
+	background: url(../assets/svg/add-regular.svg) no-repeat 50% 50%;
+	background-size: 32px 32px;
 	cursor: pointer;
+	transition: 100ms;
 }
+
+.container-add-tarefa .btn-add-tarefa:hover { background: url(../assets/svg/add-solid.svg) no-repeat 50% 50%; }
+.container-add-tarefa .btn-add-tarefa:active { transform: scale(0.9); }
 
 /* Interface geral */
 div#interface-geral {
 	width: 70%;
 	min-width: 57.1875rem; /* Evitar que seja menor que 915px */
-	margin: 4% auto 0 auto;
+	margin: 3% auto 0 auto;
 }
 
 /* Formatacao da secao de cards */
@@ -183,24 +190,35 @@ ul.card-list-container li {
 	margin-bottom: 0.9375rem;
 }
 
+#card-todo ul.card-list-container li:hover {
+	color: #FF2F64;
+	fill: #FF2F64;
+}
+
+#card-doing ul.card-list-container li:hover {
+	color: #FDB273;
+	fill: #FDB273;
+}
+
+#card-done ul.card-list-container li:hover {
+	color: #00C8C7;
+	fill: #00C8C7;
+}
+
+
 /* Mostrar e tirar os icones de cada item da lista */
-ul.card-list-container li i {
+ul.card-list-container li svg {
 	visibility: hidden;
 	position: absolute;
 	top: 5px;
 	margin-left: 0.375rem;
 
-	width: 14px;
-	height: 14px;
-	background-repeat: no-repeat;
-	background-size: 14px 14px;
+	width: 16px;
+	height: 16px;
+	fill: inherit;
 }
 
-li i.arrow-right { background-image: url(../assets/svg/right-arrow.svg); }
-
-li i.close { background-image: url(../assets/svg/close.svg); }
-
-ul.card-list-container li:hover i {
+ul.card-list-container li:hover svg {
 	visibility: visible;
 }
 
@@ -255,6 +273,7 @@ footer p a:hover {
 	div#interface-geral {
 		width: 26.25rem;
 		min-width: 26.25rem;
+		margin-top: 2.5rem;
     }
     
     section#container-cards {
