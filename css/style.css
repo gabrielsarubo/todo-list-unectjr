@@ -58,13 +58,9 @@ p {
 
 /* Formatacao do header#cabecalho */
 header#cabecalho {
-	width: fit-content;
+	display: table;
 	margin: 0 auto;
 	margin-top: 5%;
-}
-
-div.cabecalho-inner {
-	width: 26.25rem;
 }
 
 .cabecalho-inner h1 {
@@ -86,8 +82,6 @@ div.cabecalho-inner {
 
 .cabecalho-inner div.container-add-tarefa {
 	position: relative;
-	width: fit-content;
-	margin: 0 auto;
 	margin-top: 5%;
 	display: flex;
 }
@@ -132,7 +126,7 @@ div.cabecalho-inner {
 /* Interface geral */
 div#interface-geral {
 	width: 70%;
-	min-width: 57.1875rem; /* Evitar que seja menor que 915px */
+	min-width: 57.1875rem; /* Evitar que seja menor que 915px em telas maiores que 1366px */
 	margin: 3% auto 0 auto;
 }
 
@@ -148,7 +142,7 @@ section#container-cards {
 /* Formatacao de geral de todos os cards */
 section#container-cards .cards {
 	width: 17.5rem;
-	height: fit-content;
+	height: 100%;
 	min-height: 17.5rem;
 	margin-bottom: 1.5rem;
 
@@ -166,7 +160,8 @@ section#container-cards .cards:hover {
 
 /* Formatacao da container invisivel que cerca o conteudo do card */
 .cards .inner-card {
-	width: 95%;
+	display: table;
+	max-width: 95%;
 	margin: 1.25rem auto 3.125rem auto;
 }
 
@@ -191,13 +186,14 @@ ul.card-list-container {
 }
 
 ul.card-list-container li {
-	width: fit-content;
+	display: table;
 	margin: 0 auto;
 	padding: 10px 14px;
 	border-radius: 50px;
 
 	text-align: center;
 	list-style: none;
+	word-break: break-all;
 
 	background-size: 45px 13px;
 	background-repeat: no-repeat;
@@ -229,22 +225,13 @@ ul.card-list-container li:active { background-color: rgb(235, 235, 235); }
 div#card-done ul { text-decoration: line-through; }
 
 /* Footer */
-footer {
-	position: fixed;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
-}
-
 footer p {
-	width: fit-content;
-	margin: auto;
-	padding: 1.25rem;
+	padding: 1rem;
 
 	text-align: center;
 	font: Italic 0.875rem Arial;
 	letter-spacing: 0;
-	color: #39393983;
+	color: #888888;
 }
 
 footer p a {
@@ -263,13 +250,13 @@ footer p a:hover {
 	}
 
 	div#interface-geral {
-		width: 26.25rem;
-		min-width: 26.25rem;
+		width: 280px;
+		min-width: 280px;
 		margin-top: 2.5rem;
     }
     
     section#container-cards {
-		width: fit-content;
+		width: 280px;		
 		margin: 0 auto;
         flex-direction: column;
         flex-wrap: nowrap;
@@ -285,10 +272,5 @@ footer p a:hover {
 
 	.container-add-tarefa .btn-add-tarefa {
 		right: 0px;
-	}
-	
-	footer {
-		position: absolute;
-		bottom: unset;
 	}
 }
