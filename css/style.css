@@ -113,6 +113,7 @@ header#cabecalho {
 	right: -40px;/* faz com que o btn sempre tenha 12px de espaco entre o input */
 	width: 32px;
 	height: 42px;/* altura do btn precisa ser igual a altura do input */
+	border: none;/* remove button standard style */
 
 	background: url(../assets/svg/add-regular.svg) no-repeat 50% 50%;
 	background-size: 32px 32px;
