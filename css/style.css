@@ -60,7 +60,7 @@ p {
 header#cabecalho {
 	display: table;
 	margin: 0 auto;
-	margin-top: 5%;
+	margin-top: 3%;
 }
 
 .cabecalho-inner h1 {
@@ -148,7 +148,7 @@ section#container-cards .cards {
 	margin-bottom: 1.5rem;
 
 	background-color: white;
-	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.10);
+	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.15);
 	border-radius: 10px;
 
 	transition: box-shadow 300ms;
@@ -156,7 +156,7 @@ section#container-cards .cards {
 
 /* Aumentar a sombra do card quando passar o mouse */
 section#container-cards .cards:hover {
-	box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.25);
 }
 
 /* Formatacao da container invisivel que cerca o conteudo do card */
@@ -223,7 +223,7 @@ ul.card-list-container li:active { background-color: rgb(235, 235, 235); }
 #card-doing div.card-titulo { border-bottom-color: rgba(253, 177, 115, 0.5); }
 #card-done div.card-titulo { border-bottom-color: rgba(0, 200, 200, 0.5); }
 
-div#card-done ul { text-decoration: line-through; }
+div#card-done ul li { text-decoration: line-through; }
 
 /* Footer */
 footer p {
