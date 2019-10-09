@@ -37,24 +37,28 @@ function transitarTarefa() {
     const liTarget = event.target // aponta para o item li que foi clicado
     const ulParent = liTarget.parentElement // aponta para o ul que e pai do li
     const cardTarget = ulParent.parentElement.parentElement // aponta para o card pai do li: todo, doing ou done
+    const cardTargetIdName = cardTarget.getAttribute('id') // retorna o id do card de origem
     
+    let cardCode = -1 // cardCode vai determinar o card de origem e de destino
+    if (cardTargetIdName == 'card-todo') cardCode = 0
+    else if (cardTargetIdName == 'card-doing') cardCode = 1
+    else if (cardTargetIdName == 'card-done') cardCode = 2
+
+    // definir o card de destino com base no card code
+    fCardDestino = () => {
+        if (cardCode == 0) return document.getElementsByClassName('cards')[cardCode+1].getElementsByClassName('card-list-container')[0]
+        else if (cardCode == 1) return document.getElementsByClassName('cards')[cardCode+1].getElementsByClassName('card-list-container')[0]
+        else if (cardCode == 2) return null // null porque nao existe um card de destino depois do ultimo card
+    }
+    const cardDestino = fCardDestino()
+
     // TODO para DOING e DOING para DONE
-    const cardTargetIdName = cardTarget.getAttribute('id')
     if (cardTargetIdName == 'card-todo' || cardTargetIdName == 'card-doing') {
-        // cardCode vai determinar o card de origem e o de destino
-        let cardCode = cardTargetIdName == 'card-todo' ? 0 : 1
+        const li = document.createElement('li') // add um novo li para o card de destino
+        li.textContent = liTarget.textContent // inserir o texto da li que foi clicada
+        ulParent.removeChild(liTarget) // remover li do ul do card de origem
 
-        // copiar texto da li clicada
-        let liText = liTarget.textContent
-        // remover li do card de origem
-        ulParent.removeChild(liTarget)
-        // add um novo li para o card de destino
-        const li = document.createElement('li')
-        li.textContent = liText
-
-        // Add uma nova li no card correto
-        // 0 = todo, 1 = doing, 2 = done
-        document.getElementsByClassName('cards')[cardCode+1].getElementsByClassName('card-list-container')[0].appendChild(li)
+        cardDestino.appendChild(li) // Add uma nova li no card de destino
     }
     // DONE para excluido
     else if (cardTargetIdName == 'card-done') {
