@@ -159,6 +159,11 @@ section#container-cards .cards:hover {
 	box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.25);
 }
 
+/* Classes add no card pelo JS quando o card estiver vazio */
+/* Diminuir o box-shadow e zera-lo ao passar o mouse */
+section#container-cards .cards-vazio { box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15); }
+section#container-cards .cards-vazio:hover { box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15); }
+
 /* Formatacao da container invisivel que cerca o conteudo do card */
 .cards .inner-card {
 	display: table;
@@ -186,6 +191,15 @@ ul.card-list-container {
 	margin-top: 2.2rem;
 }
 
+/* Classe add na UL pelo JS para quando o card estiver vazio */
+ul.card-list-container-empty::before {
+	content: "Tudo vazio por aqui :)";
+	line-height: 5;
+	color: rgb(170, 170, 170);
+	font-style: italic;
+	text-decoration: solid;
+}
+
 ul.card-list-container li {
 	display: table;
 	margin: 0 auto;
@@ -207,7 +221,7 @@ ul.card-list-container li {
 ul.card-list-container li:hover {
 	padding-right: 40px;
 	background-position: right center;
-	background-color: rgb(245, 245, 245);
+	background-color: rgb(240, 240, 240);
 }
 
 /* Alterar a cor do fundo ao clicar nas listas */
