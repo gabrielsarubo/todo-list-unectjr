@@ -46,8 +46,8 @@ function transitarTarefa() {
 
     // definir o card de destino com base no card code
     fCardDestino = () => {
-        if (cardCode == 0) return document.getElementsByClassName('cards')[cardCode+1].getElementsByClassName('card-list-container')[0]
-        else if (cardCode == 1) return document.getElementsByClassName('cards')[cardCode+1].getElementsByClassName('card-list-container')[0]
+        if (cardCode == 0) return document.getElementsByClassName('cards')[cardCode+1]
+        else if (cardCode == 1) return document.getElementsByClassName('cards')[cardCode+1]
         else if (cardCode == 2) return null // null porque nao existe um card de destino depois do ultimo card
     }
     const cardDestino = fCardDestino()
@@ -58,7 +58,7 @@ function transitarTarefa() {
         li.textContent = liTarget.textContent // inserir o texto da li que foi clicada
         ulParent.removeChild(liTarget) // remover li do ul do card de origem
 
-        cardDestino.appendChild(li) // Add uma nova li no card de destino
+        cardDestino.getElementsByClassName('card-list-container')[0].appendChild(li) // Add uma nova li ao ul do card de destino
     }
     // DONE para excluido
     else if (cardTargetIdName == 'card-done') {
