@@ -60,7 +60,7 @@ p {
 header#cabecalho {
 	display: table;
 	margin: 0 auto;
-	margin-top: 3%;
+	margin-top: 4%;
 }
 
 .cabecalho-inner h1 {
@@ -72,7 +72,7 @@ header#cabecalho {
 /* Estilo do logo do site */
 .cabecalho-inner h1 span:first-child {
 	font-family: 'Raleway Semibold', Tahoma, sans-serif;
-	color: #6f68a3;
+	color: #3771c8;
 }
 
 .cabecalho-inner h1 span:last-child {
@@ -82,12 +82,13 @@ header#cabecalho {
 
 .cabecalho-inner div.container-add-tarefa {
 	position: relative;
-	margin-top: 5%;
+	width: 280px;
+	margin-top: 7%;
 	display: flex;
 }
 
 .container-add-tarefa input.input-add-tarefa {
-	width: 280px;
+	width: 238px;
 	height: 42px;
 
 	box-sizing: border-box;
@@ -104,13 +105,13 @@ header#cabecalho {
 	/* Efeito de sombra quando input ter foco */
 	input.input-add-tarefa:focus {
 		outline: none;
-		border: 2px solid rgba(111, 104, 163, 0.7);		
-		box-shadow: 0 0 8px 2px rgba(111, 104, 163, 0.25);
+		border: 2px solid rgba(55,113,200,0.7);
+		box-shadow: 0 0 8px 2px rgba(55,113,200,0.25);
 	}
 
 .container-add-tarefa .btn-add-tarefa {
 	position: absolute;/* garante que o btn sempre esteja ao lado do input */
-	right: -40px;/* faz com que o btn sempre tenha 12px de espaco entre o input */
+	right: 0;/* faz com que o btn sempre tenha 12px de espaco entre o input */
 	width: 32px;
 	height: 42px;/* altura do btn precisa ser igual a altura do input */
 	border: none;/* remove button standard style */
@@ -128,7 +129,7 @@ header#cabecalho {
 div#interface-geral {
 	width: 70%;
 	min-width: 57.1875rem; /* Evitar que seja menor que 915px em telas maiores que 1366px */
-	margin: 3% auto 0 auto;
+	margin: 4% auto 0 auto;
 }
 
 /* Formatacao da secao de cards */
@@ -196,7 +197,6 @@ ul.card-list-container-empty::before {
 	content: "Tudo vazio por aqui :)";
 	line-height: 5;
 	color: rgb(170, 170, 170);
-	font-style: italic;
 	text-decoration: solid;
 }
 
@@ -215,7 +215,9 @@ ul.card-list-container li {
 	background-position: 95% center;
 
 	cursor: pointer;
-	transition: 200ms;
+	transition: all 0.2s ease;
+
+	animation: fadeOut 500ms ease;
 }
 
 ul.card-list-container li:hover {
@@ -241,12 +243,13 @@ div#card-done ul li { text-decoration: line-through; }
 
 /* Footer */
 footer p {
+	margin-top: 1%;
 	padding: 1rem;
 
 	text-align: center;
-	font: Italic 0.875rem Arial;
+	font: 0.875rem Arial;
 	letter-spacing: 0;
-	color: #888888;
+	color: #b1b1b1;
 }
 
 footer p a {
@@ -255,7 +258,20 @@ footer p a {
 }
 
 footer p a:hover {
-	color: #393939;
+	color: #3771c8;
+	text-decoration: underline #3771c8;
+}
+
+/* Animations */
+@keyframes fadeOut {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* Para dispositivos menores que 1024px para baixo */
@@ -275,17 +291,5 @@ footer p a:hover {
 		margin: 0 auto;
         flex-direction: column;
         flex-wrap: nowrap;
-	}
-
-	.cabecalho-inner div.container-add-tarefa {
-		width: 280px;
-	}
-
-	.container-add-tarefa input.input-add-tarefa {
-		width: 238px;
-	}
-
-	.container-add-tarefa .btn-add-tarefa {
-		right: 0px;
 	}
 }

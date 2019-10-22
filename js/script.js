@@ -1,9 +1,85 @@
-document.querySelector("header .btn-add-tarefa").addEventListener("click", addTarefa)
+const ulCardTodo = document.querySelector('#card-todo ul')
+const ulCardDoing = document.querySelector('#card-doing ul')
+const ulCardDone = document.querySelector('#card-done ul')
 
+const btnAddTarefa = document.querySelector("header .btn-add-tarefa")
 const inputTarefa = document.querySelector('header .input-add-tarefa')
 
+const save = (cardNum) => {
+    let listItems = null
+    if (cardNum == 0) {
+        listItems = ulCardTodo.getElementsByTagName("li") // card = 0
+    } else if (cardNum == 1) {
+        listItems = ulCardDoing.getElementsByTagName("li") // card = 1
+    } else if (cardNum == 2) {
+        listItems = ulCardDone.getElementsByTagName("li") // card = 2
+    } else { return }
+
+    let arrTarefas = []
+
+    if (localStorage.getItem('arrTarefas')) {    
+        arrTarefas = JSON.parse(localStorage.getItem('arrTarefas'))
+    }
+
+    // marcar tudo que esta no Local Storage o card X com card == -1
+    for (let i = 0; i < arrTarefas.length; i++) {
+        if (arrTarefas[i].card == cardNum) {
+            arrTarefas[i].card = -1
+        }
+    }
+    // aux da funcao que vai remover por card == -1
+    let filtered = arrTarefas.filter(function(cardNumber) {
+        return cardNumber.card != -1
+    })
+    
+    // add tudo de novo
+    for (let i = 0; i < listItems.length; i++) {
+        filtered.push({card: cardNum, text: listItems[i].textContent})
+    }
+    
+    localStorage.setItem('arrTarefas', JSON.stringify(filtered))
+}
+
+const load = () => {
+    if (localStorage.getItem('arrTarefas')) {
+        let arrTarefas = JSON.parse(localStorage.getItem('arrTarefas'))
+
+        for (let i = 0; i < arrTarefas.length; i++) {
+            // buscar os LIs do card todo
+            if (arrTarefas[i].card == 0) {
+                // add o texto dentro do card todo
+                let li = document.createElement('li')
+                li.textContent = arrTarefas[i].text
+                ulCardTodo.appendChild(li)
+
+                verificarVazio(null, document.getElementById('card-todo'))
+            }
+
+            // buscar os LIs do card doing
+            else if (arrTarefas[i].card == 1) {
+                // add o texto dentro do card doing
+                let li = document.createElement('li')
+                li.textContent = arrTarefas[i].text
+                ulCardDoing.appendChild(li)
+
+                verificarVazio(null, document.getElementById('card-doing'))
+            }
+
+            // buscar os LIs do card done
+            else if (arrTarefas[i].card == 2) {
+                // add o texto dentro do card done
+                let li = document.createElement('li')
+                li.textContent = arrTarefas[i].text
+                ulCardDone.appendChild(li)
+
+                verificarVazio(null, document.getElementById('card-done'))
+            }
+        }
+    }
+}
+
 // Add dentro do card de ToDo o novo item de lista, i.e. tarefa
-function addTarefa() {
+const addTarefa = () => {
     // Verificar se o usuario passou um campo vazio
     if (!inputTarefa.value) {
         alert('Por favor, informe o nome da tarefa.')
@@ -22,35 +98,28 @@ function addTarefa() {
     // origem eh null pois nao existe um card de origem vindo do input
     verificarVazio(null, document.getElementById('card-todo'))
 
+    save(0)
+
     inputTarefa.value = ''
 }       
 
-// Eu preciso clicar em um item de uma lista
-// e entao, a partir desse clique, saber exatamente
-// qual o item, para entao pegar o texto dentro dele
-// e passar para o proximo card
-document.querySelector('#card-todo ul').addEventListener("click", transitarTarefa);
-document.querySelector('#card-doing ul').addEventListener("click", transitarTarefa);
-document.querySelector('#card-done ul').addEventListener("click", transitarTarefa);
-
-function transitarTarefa() {
-    const liTarget = event.target // aponta para o item li que foi clicado
+// Eu preciso clicar em um item de uma lista e entao, a partir desse clique, saber exatamente
+// qual o item, para entao pegar o texto dentro dele e passar para o proximo card
+const transitarTarefa = (e) => {
+    const liTarget = e.target // aponta para o item li que foi clicado
     const ulParent = liTarget.parentElement // aponta para o ul que e pai do li
     const cardTarget = ulParent.parentElement.parentElement // aponta para o card pai do li: todo, doing ou done
     const cardTargetIdName = cardTarget.getAttribute('id') // retorna o id do card de origem
     
-    let cardCode = -1 // cardCode vai determinar o card de origem e de destino
+    let cardCode = null // cardCode vai determinar o card de origem e de destino
     if (cardTargetIdName == 'card-todo') cardCode = 0
     else if (cardTargetIdName == 'card-doing') cardCode = 1
     else if (cardTargetIdName == 'card-done') cardCode = 2
 
     // definir o card de destino com base no card code
-    fCardDestino = () => {
-        if (cardCode == 0) return document.getElementsByClassName('cards')[cardCode+1]
-        else if (cardCode == 1) return document.getElementsByClassName('cards')[cardCode+1]
-        else if (cardCode == 2) return null // null porque nao existe um card de destino depois do ultimo card
-    }
-    const cardDestino = fCardDestino()
+    if (cardCode == 0) cardDestino = document.getElementsByClassName('cards')[cardCode+1]
+    else if (cardCode == 1) cardDestino = document.getElementsByClassName('cards')[cardCode+1]
+    else if (cardCode == 2) cardDestino = null // null porque nao existe um card de destino depois do ultimo card
 
     // TODO para DOING e DOING para DONE
     if (cardTargetIdName == 'card-todo' || cardTargetIdName == 'card-doing') {
@@ -68,11 +137,15 @@ function transitarTarefa() {
     
     // verificar se os cars de origem e destino precisam ser estilizados caso estejam vazios
     verificarVazio(cardTarget, cardDestino)
+
+    save(0)
+    save(1)
+    save(2)
 }
 
 // Reponsavel por checar se alguma mudanca de estilo precisa ser feita,
 // ele deve ser chamado toda vez que uma tarefa for adicionada, ou transitada de um card para o outro, ou removida
-function verificarVazio(origem, destino) {
+const verificarVazio = (origem, destino) => {
     // encontrar os ul de card origem e de destino
     let ulOrigParent = null
     let ulDestParent = null
@@ -98,7 +171,7 @@ function verificarVazio(origem, destino) {
 }
 
 // Funcao auxiliar de verificarVazio() usada para add ou retirar os estilos dos cards
-function modificarEstiloVazio(ulOrigParent, ulDestParent, addEstilo) {
+const modificarEstiloVazio = (ulOrigParent, ulDestParent, addEstilo) => {
     // add estilos de vazio
     if (addEstilo) {
         ulOrigParent.classList.add('card-list-container-empty') // modificar o estilo da UL para vazio
@@ -112,3 +185,27 @@ function modificarEstiloVazio(ulOrigParent, ulDestParent, addEstilo) {
         ulDestParent.parentElement.parentElement.classList.remove('cards-vazio')
     }
 }
+
+// Executa uma funcao quando o usuario clica em uma tecla no teclado
+inputTarefa.addEventListener("keyup", function(event) {
+  // Numero 13 eh a tecla "Enter" do teclado
+  if (event.keyCode === 13) {
+    // Cancele a acao padrao, se necessario
+    event.preventDefault();
+    // Trigger o botao com um clique
+    btnAddTarefa.click();
+  }
+});
+
+ulCardTodo.onclick = transitarTarefa
+ulCardDoing.onclick = transitarTarefa
+ulCardDone.onclick = transitarTarefa
+
+btnAddTarefa.onclick = addTarefa
+
+// verificar se os cards estao vazios ao carregar a pagina
+verificarVazio(document.querySelector('#card-todo'), null)
+verificarVazio(document.querySelector('#card-doing'), null)
+verificarVazio(document.querySelector('#card-done'), null)
+
+load()
