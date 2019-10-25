@@ -137,6 +137,7 @@ header#cabecalho {
 div#interface-geral {
 	width: 70%;
 	min-width: 57.1875rem; /* Evitar que seja menor que 915px em telas maiores que 1366px */
+	max-width: 1100px;
 	margin: 4% auto 0 auto;
 }
 

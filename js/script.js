@@ -125,26 +125,37 @@ const transitarTarefa = (e) => {
     else if (cardCode == 1) cardDestino = document.getElementsByClassName('cards')[cardCode+1]
     else if (cardCode == 2) cardDestino = null // null porque nao existe um card de destino depois do ultimo card
 
-    // TODO para DOING e DOING para DONE
-    if (cardTargetIdName == 'card-todo' || cardTargetIdName == 'card-doing') {
-        const li = document.createElement('li') // add um novo li para o card de destino
-        li.textContent = liTarget.textContent // inserir o texto da li que foi clicada
-        ulParent.removeChild(liTarget) // remover li do ul do card de origem
+    // animacao que faz o item removido desaparecer lentamente da tela
+    let animation = liTarget.animate([{
+        opacity: '1',
+        transform: 'scale(1)'
+    }, {
+        opacity: '0',
+        transform: 'scale(0.8)'
+    }], 200)
 
-        cardDestino.getElementsByClassName('card-list-container')[0].appendChild(li) // Add uma nova li ao ul do card de destino
-    }
-    // DONE para excluido
-    else if (cardTargetIdName == 'card-done') {
-        // remover li do card de origem
-        ulParent.removeChild(liTarget)
-    }
-    
-    // verificar se os cars de origem e destino precisam ser estilizados caso estejam vazios
-    verificarVazio(cardTarget, cardDestino)
+    animation.onfinish = () => {
+        
+        // TODO para DOING e DOING para DONE
+        if (cardTargetIdName == 'card-todo' || cardTargetIdName == 'card-doing') {
+            const li = document.createElement('li') // add um novo li para o card de destino
+            li.textContent = liTarget.textContent // inserir o texto da li que foi clicada
+            ulParent.removeChild(liTarget) // remover li do ul do card de origem
 
-    save(0)
-    save(1)
-    save(2)
+            cardDestino.getElementsByClassName('card-list-container')[0].appendChild(li) // Add uma nova li ao ul do card de destino
+        }
+
+        // DONE para excluido
+        else if (cardTargetIdName == 'card-done') {
+            // remover li do card de origem
+            ulParent.removeChild(liTarget)
+        }
+        
+        // verificar se os cars de origem e destino precisam ser estilizados caso estejam vazios
+        verificarVazio(cardTarget, cardDestino); 
+
+        save(0); save(1); save(2);    
+    }    
 }
 
 // Reponsavel por checar se alguma mudanca de estilo precisa ser feita,
