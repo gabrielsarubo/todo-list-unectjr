@@ -78,6 +78,7 @@ header#cabecalho {
 .cabecalho-inner h1 span:last-child {
 	font-weight: 400;
 	font-style: italic;
+	padding-left: 0.4rem;
 }
 
 .cabecalho-inner div.container-add-tarefa {
@@ -116,14 +117,21 @@ header#cabecalho {
 	height: 42px;/* altura do btn precisa ser igual a altura do input */
 	border: none;/* remove button standard style */
 
-	background: url(../assets/svg/add-regular.svg) no-repeat 50% 50%;
+	background: url(../assets/svg/add-disabled.svg) no-repeat 50% 50% transparent;
 	background-size: 32px 32px;
 	cursor: pointer;
 	transition: 100ms;
 }
 
-.container-add-tarefa .btn-add-tarefa:hover { background: url(../assets/svg/add-solid.svg) no-repeat 50% 50%; }
-.container-add-tarefa .btn-add-tarefa:active { transform: scale(0.9); }
+.container-add-tarefa .btn-add-tarefa:hover { background-image: url(../assets/svg/add-solid.svg); }
+.container-add-tarefa .btn-add-tarefa:active { transform: scale(0.9); outline: none; }
+
+/* Quando o btn for invalido, mostra icone desabilitado */
+.btn-add-tarefa[data-state="invalid"] { background-image: url(../assets/svg/add-disabled.svg); }
+.btn-add-tarefa[data-state="invalid"]:hover { background-image: url(../assets/svg/add-disabled.svg); }
+
+/* Quando o btn for valido, mostra icone regular */
+.btn-add-tarefa[data-state="valid"] { background-image: url(../assets/svg/add-regular.svg); }
 
 /* Interface geral */
 div#interface-geral {

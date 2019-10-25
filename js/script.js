@@ -100,7 +100,11 @@ const addTarefa = () => {
 
     save(0)
 
+    // Ao terminar de add uma nova tarefa, resetar as configuracoes do botao para que ele nao possa ser clicado
+    btnAddTarefa.dataset.state = 'invalid'
+    document.querySelector('header .btn-add-tarefa').disabled = true
     inputTarefa.value = ''
+    inputTarefa.focus()
 }       
 
 // Eu preciso clicar em um item de uma lista e entao, a partir desse clique, saber exatamente
@@ -186,16 +190,32 @@ const modificarEstiloVazio = (ulOrigParent, ulDestParent, addEstilo) => {
     }
 }
 
+// Toda vez que o campo do input for modificado, esta funcao eh chamada para verificar se o valor do input eh valido,
+// se não for, o usuario nao podera add uma nova tarefa
+inputTarefa.oninput = evt => {
+    const value = inputTarefa.value.trim()
+
+    if (value) {
+        btnAddTarefa.dataset.state = 'valid'
+        document.querySelector('header .btn-add-tarefa').disabled = false;
+    } else {
+        btnAddTarefa.dataset.state = 'invalid'
+        document.querySelector('header .btn-add-tarefa').disabled = true;
+    }
+}
+
 // Executa uma funcao quando o usuario clica em uma tecla no teclado
-inputTarefa.addEventListener("keyup", function(event) {
-  // Numero 13 eh a tecla "Enter" do teclado
-  if (event.keyCode === 13) {
-    // Cancele a acao padrao, se necessario
-    event.preventDefault();
-    // Trigger o botao com um clique
-    btnAddTarefa.click();
-  }
-});
+inputTarefa.onkeyup = evt => {
+    // Numero 13 eh a tecla "Enter" do teclado
+    if (evt.keyCode === 13) {
+        // Cancele a acao padrao, se necessario
+        evt.preventDefault();
+        // Trigger o botao com um clique se o input for valido
+        if (inputTarefa.value.trim()) {
+            btnAddTarefa.click();
+        }
+    }
+};
 
 ulCardTodo.onclick = transitarTarefa
 ulCardDoing.onclick = transitarTarefa
